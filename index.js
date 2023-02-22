@@ -183,7 +183,7 @@ Use the getReviewsByRating function below to do the following:
 
  function getReviewByRating(array, num) {
     const reviewsByRating = [];
-    for (let key in array){
+    for (const key in array){
       if (array[key].rating >= num && array[key].rating < num + 1) {
         reviewsByRating.push(array[key]);
       }
@@ -191,7 +191,7 @@ Use the getReviewsByRating function below to do the following:
     return reviewsByRating;
   }
 
-  console.log(getReviewByRating(reviews, 4));
+  // console.log(getReviewByRating(reviews, 4));
 
 /* 💪💪💪💪💪💪💪💪💪💪 STRETCH 2: 💪💪💪💪💪💪💪💪💪💪   
 Use the getLongReviews function below to do the following:
@@ -206,9 +206,19 @@ Use the getLongReviews function below to do the following:
   ]
 */
 
-function getLongReviews(/* code here */) {
-    /* code here */
+function getLongReviews(array) {
+    const longReviews = [];
+    for (const key in array){
+      const numberOfWords = array[key].feedback.split(" ").length;
+      // console.log("task stretch2:",numberOfWords);
+      if (numberOfWords >= 15){
+        longReviews.push(array[key].feedback);
+      }
+    }
+    return longReviews;
   }
+
+  console.log(getLongReviews(reviews));
   
 
 /* 💪💪💪💪💪💪💪💪💪💪 STRETCH 3: 💪💪💪💪💪💪💪💪💪💪 
