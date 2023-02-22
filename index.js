@@ -15,13 +15,17 @@ The function should:
   Example createMenuItem('tacos', 8, 'Lunch') should return {name: 'tacos', price: 8, category: 'Lunch'}
 */
 
+//can also complete the way below: 
+// function createMenuItem(name, price, category){
+//   const newMenuItem = { };
+//     newMenuItem.name = name;
+//     newMenuItem.price = price;
+//     newMenuItem.category = category;
+//   return newMenuItem;
+// }
 
 function createMenuItem(name, price, category){
-  const newMenuItem = { };
-    newMenuItem.name = name;
-    newMenuItem.price = price;
-    newMenuItem.category = category;
-  return newMenuItem;
+  return {name, price, category};
 }
 
 // console.log(createMenuItem('tacos', 8, 'Lunch'));
@@ -63,13 +67,13 @@ const burger = {
 
 burger.discount = function(eligibleCategory) {
   if (eligibleCategory === "teacher" || eligibleCategory === "student"){
-    return burger.price - (burger.price * .25);
+    return this.price - (this.price * .25);
   } else if (eligibleCategory === "public") {
-    return burger.price - (burger.price * .10);
+    return this.price - (this.price * .10);
   }
 }
 
-// console.log(burger.discount("student"));
+// console.log(burger.discount("teacher"));
 
 ///////////////Reviews (MVP)///////////////////
 const reviews = [
@@ -98,6 +102,7 @@ Reyna's feedback is missing! Use what you know to do the following: (no function
 
 reviews[7].feedback = "this place is chill with really cool people, great for getting work done on weekdays";
 // console.log(reviews);
+
 
 /* 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀 Task 5: 🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀
 Write a function that creates an object with name, rating, feedback, add the new review to the end of an array and returns the resulting array. 
@@ -176,11 +181,18 @@ Use the getReviewsByRating function below to do the following:
   ]
 */
 
- function getReviewByRating(/* code here */) {
-    /* code here */
+ function getReviewByRating(array, num) {
+    const reviewsByRating = [];
+    for (let key in array){
+      if (array[key].rating >= num && array[key].rating < num + 1) {
+        reviewsByRating.push(array[key]);
+      }
+    }
+    return reviewsByRating;
   }
 
-  
+  console.log(getReviewByRating(reviews, 4));
+
 /* 💪💪💪💪💪💪💪💪💪💪 STRETCH 2: 💪💪💪💪💪💪💪💪💪💪   
 Use the getLongReviews function below to do the following:
   1. Receive the array that holds all the reviews
